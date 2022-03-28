@@ -5,13 +5,16 @@ import java.io.Serializable;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.app.annotations.IsValidEmail;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
+import static com.app.error.ErrorType.Type.NOT_EMPTY;
+import static com.app.error.ErrorType.Type.WRONG_FORMAT;
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,19 +27,23 @@ public class RegisterUserRequest implements Serializable{
 	private static final String FIELD_USER_FIRSTNAME = "userFirstName";
 	private static final String FIELD_USERLASTNAME = "userLastName";
 	private static final String FIELD_EMAIL = "email";
+	private static final String EMPTY_USER_FIRSTNAME = "empty-userFirstName";
+	private static final String EMPTY_USER_LASTNAME = "empty-userLastName";
+	private static final String EMPTY_EMAIL = "empty-email";
 	
 	@NotNull
 	private Integer userId;
 	
 	@NotNull
-	@NotEmpty(message = "This field is not empty")
+	@NotEmpty(message = FIELD_USER_FIRSTNAME + ":" + EMPTY_USER_FIRSTNAME + ":" + NOT_EMPTY)
 	private String userFirstName;
 	
 
     private String userLastName;
     
 	@NotNull
-	@NotEmpty(message = "This field is not empty")
+	@NotEmpty(message = FIELD_EMAIL + ":" + EMPTY_EMAIL + ":" + NOT_EMPTY)
+	@IsValidEmail(message = FIELD_EMAIL + ":" + WRONG_FORMAT)
 	private String email;
 	
 	public Integer getUserId() {

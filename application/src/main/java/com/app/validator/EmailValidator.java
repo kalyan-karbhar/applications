@@ -1,5 +1,6 @@
 package com.app.validator;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,11 +22,11 @@ public class EmailValidator implements ConstraintValidator<IsValidEmail, Object>
 	}
 	@Override
 	public boolean isValid(Object value, ConstraintValidatorContext context) {
-		List<String> emailAddresses = null;
+		List<String> emailAddresses = new ArrayList<>();
 		Pattern pattern;
 		Matcher matcher;
 		if(value == null ) {
-			return true;
+			return false;
 		}
 		if(value instanceof List) {
 			if(((List)value).size() == 0) {
@@ -46,7 +47,7 @@ public class EmailValidator implements ConstraintValidator<IsValidEmail, Object>
 				}
 			}
 		}
-		return false;
+		return true;
 	}
 
 }

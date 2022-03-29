@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiOperation;
@@ -32,7 +33,7 @@ public class RegisterUserController {
 	
 	@ApiOperation(value = USER_REGISER )
 	@ApiResponses(value = {
-			@ApiResponse(code = 404, message = "Not found", response = ErrorResponse.class),
+			@ApiResponse(code = 404, message = "Not Found", response = ErrorResponse.class),
 			@ApiResponse(code = 500, message = "Internal server error", response = ErrorResponse.class),
 			@ApiResponse(code = 409, message = "Conflict error", response = ErrorResponse.class),
 			@ApiResponse(code = 400, message = "Bad Request", response = ErrorResponse.class)

@@ -20,14 +20,18 @@
 		<swagger.version>2.9.2</swagger.version>
 		<swagger.model.version>1.5.21</swagger.model.version>
 		<lambok.version>1.18.22</lambok.version>
-		<spring.validation.version></spring.validation.version>
+		<datase.repo.version></datase.repo.version>
+		<spring.validation.version>0.0.1-SNAPSHOT</spring.validation.version>
 	</properties>
 	
 	<dependencies>
-<!-- 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency> -->
+	
+		<dependency>
+			<groupId>com.app</groupId>
+	        <artifactId>database-repository</artifactId>
+	        <version>0.0.1-SNAPSHOT</version>
+	        <classifier>jar-with-dependencies</classifier>
+		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -54,26 +58,40 @@
 		</dependency>
 		
 		<dependency>
-		<groupId>org.springframework.boot</groupId>
+		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		
 		<dependency>
-		 <groupId>io.springfox</groupId>
-		 <artifactId>springfox-swagger2</artifactId>
-		 <version>${swagger.version}</version>
+		   <groupId>io.springfox</groupId>
+		   <artifactId>springfox-swagger2</artifactId>
+		   <version>${swagger.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
 		<!-- <dependency>
 		 <groupId>io.swagger</groupId>
 		 <artifactId>swagger-models</artifactId>
 		 <version>${swagger.model.version}</version>
 		</dependency> -->
+		
 		<dependency>
-		 <groupId>io.springfox</groupId>
-		 <artifactId>springfox-swagger-ui</artifactId>
-		 <version>${swagger.version}</version>
-		 <scope>compile</scope>
+		     <groupId>io.springfox</groupId>
+		     <artifactId>springfox-swagger-ui</artifactId>
+		     <version>${swagger.version}</version>
+		     <scope>compile</scope>
 		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -82,6 +100,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-surefire-plugin</artifactId>
+              <version>2.19.1</version>
+        </plugin>
 		</plugins>
 	</build>
 

@@ -3,27 +3,41 @@ package com.app.services.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aap.response.UserDetail;
+import com.app.entity.UserDetails;
+import com.app.repository.UserDetailsRepository;
 import com.app.request.RegisterUserRequest;
 import com.app.services.RegisterUserService;
 
 @Service
 public class RegisterUserServiceImpl implements RegisterUserService{
 
+	@Autowired
+	UserDetailsRepository userDetailsRepository;
+	
 	@Override
 	public List<UserDetail> saveUserDetail(RegisterUserRequest request) {
-List<UserDetail> userdetailsList = new ArrayList<>(); 
-		
-		UserDetail userDetail = new UserDetail();
-		userDetail.setUserId(request.getUserId());
-		userDetail.setUserFirstName(request.getUserFirstName());
-		userDetail.setUserLastName(request.getUserLastName());
-		userDetail.setEmail(request.getEmail());
-		
-		userdetailsList.add(userDetail);
-		return userdetailsList;
+    
+		return null;
+	}
+
+	@Override
+	public List<UserDetail> getAllUsers() {
+		  List<UserDetail> userdetailsList = new ArrayList<>(); 
+			
+			List<UserDetails> userDetailList = userDetailsRepository.findAll();
+			userDetailList.forEach(userdetail ->{
+				UserDetail userDetail = new UserDetail();
+				userDetail.setUserId(userdetail.getId());
+				userDetail.setUserFirstName(userdetail.getFname());
+				userDetail.setUserLastName(userdetail.getLname());
+				userDetail.setEmail(userdetail.getEmail());
+				userdetailsList.add(userDetail);
+			});
+			return userdetailsList;
 	}
 
 }

@@ -15,4 +15,10 @@ public interface RegisterUserService {
 	 * @return
 	 */
 public List<UserDetail> saveUserDetail(RegisterUserRequest request);
+
+/**
+ * This method return all the user present in database
+ * @return
+ */
+public List<UserDetail> getAllUsers();
 }

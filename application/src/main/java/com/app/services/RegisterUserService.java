@@ -1,10 +1,12 @@
 package com.app.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.aap.response.UserDetail;
+import com.app.entity.UserDetails;
 import com.app.request.RegisterUserRequest;
 
 @Service
@@ -21,4 +23,11 @@ public List<UserDetail> saveUserDetail(RegisterUserRequest request);
  * @return
  */
 public List<UserDetail> getAllUsers();
+
+/**
+ * This method return the user details based on user id
+ * @return
+ */
+
+public Optional<UserDetails> getUserById(Integer userId);
 }

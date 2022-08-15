@@ -2,7 +2,9 @@ package com.aap.response;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
+import com.app.entity.UserDetails;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -18,16 +20,16 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class RegisterUserResponse implements Serializable {
+public class UserDetailResponse implements Serializable {
+	
+	@JsonProperty(value = "user-detail")
+	Optional<UserDetails> userDetail ;
 
-	@JsonProperty(value = "users-detail")
-	List<UserDetail> userDetail ;
-
-	public List<UserDetail> getUserDetail() {
+	public Optional<UserDetails> getUserDetail() {
 		return userDetail;
 	}
 
-	public void setUserDetail(List<UserDetail> userDetail) {
+	public void setUserDetail(Optional<UserDetails> userDetail) {
 		this.userDetail = userDetail;
 	}
 	
